@@ -94,6 +94,68 @@
     background-color: hsl(222, 47%, 2%);
   }
 
+  .hover-shiny-border {
+    position: relative;
+    padding: 1px;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background: transparent;
+    transition: background 0.3s ease;
+  }
+
+  .hover-shiny-border:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .hover-shiny-border::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent,
+        transparent,
+        transparent,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.1),
+        transparent,
+        transparent,
+        transparent,
+        transparent);
+    animation: rotate 4s linear infinite;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    /* Only show the border area */
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+  }
+
+  .hover-shiny-border:hover::before {
+    opacity: 1;
+  }
+
+  .project-gradient-bg {
+    background: linear-gradient(135deg,
+        hsl(222, 47%, 2%) 0%,
+        hsl(222, 47%, 5%) 50%,
+        hsl(222, 47%, 2%) 100%);
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   @keyframes golden-glimmer {
     0% {
       background-position: 0% 50%;

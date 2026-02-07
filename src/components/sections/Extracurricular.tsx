@@ -61,37 +61,39 @@ const Extracurricular = () => {
             transition={{ duration: 0.6 }}
             className="md:col-span-3 space-y-6"
           >
-            <div className="p-8 rounded-3xl bg-secondary/5 border border-white/10 hover:border-primary/30 transition-all duration-300 shadow-2xl backdrop-blur-sm group">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-                <div>
-                  <h3 className="text-2xl font-black text-white group-hover:text-primary transition-colors">
-                    Lingo Freaks Literary Society
-                  </h3>
-                  <p className="text-primary font-bold text-lg">Club Head, GCET</p>
+            <div className="hover-shiny-border">
+              <div className="p-8 rounded-3xl bg-secondary/5 border border-white/10 hover:border-primary/30 transition-all duration-300 shadow-2xl backdrop-blur-sm group relative z-10">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                  <div>
+                    <h3 className="text-2xl font-black text-white group-hover:text-primary transition-colors">
+                      Lingo Freaks Literary Society
+                    </h3>
+                    <p className="text-primary font-bold text-lg">Club Head, GCET</p>
+                  </div>
+                  <span className="text-primary font-bold text-base">
+                    2023 – 2024
+                  </span>
                 </div>
-                <span className="text-primary font-bold text-base">
-                  2023 – 2024
-                </span>
-              </div>
 
-              <ul className="space-y-6">
-                {achievements.map((item, idx) => (
-                  <motion.li
-                    key={idx}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="flex gap-4 items-start group/item"
-                  >
-                    <div className="p-2.5 rounded-xl bg-primary/10 border border-primary/20 text-primary group-hover/item:scale-110 transition-transform">
-                      {item.icon}
-                    </div>
-                    <p className="text-foreground/80 leading-relaxed font-medium group-hover/item:text-foreground transition-colors pt-1">
-                      {item.text}
-                    </p>
-                  </motion.li>
-                ))}
-              </ul>
+                <ul className="space-y-6">
+                  {achievements.map((item, idx) => (
+                    <motion.li
+                      key={idx}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="flex gap-4 items-start group/item"
+                    >
+                      <div className="p-2.5 rounded-xl bg-primary/10 border border-primary/20 text-primary group-hover/item:scale-110 transition-transform">
+                        {item.icon}
+                      </div>
+                      <p className="text-foreground/80 leading-relaxed font-medium group-hover/item:text-foreground transition-colors pt-1">
+                        {item.text}
+                      </p>
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </motion.div>
 

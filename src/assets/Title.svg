@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="18" fill="#0B132B"></rect>
+  <text x="50" y="62" text-anchor="middle" font-size="44" font-weight="800" fill="#FCA311" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" letter-spacing="-4">
+    ST
+  </text>
+</svg>

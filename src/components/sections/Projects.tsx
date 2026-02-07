@@ -3,13 +3,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { motion } from "framer-motion";
 import { Github, ExternalLink, Zap } from "lucide-react";
 import {
-  SiReact, SiTypescript, SiTailwindcss, SiPostgresql, SiJavascript,
+  SiReact, SiTypescript, SiTailwindcss,
 } from "react-icons/si";
 import { FaChartBar } from "react-icons/fa";
 import { WiDaySunny } from "react-icons/wi";
 import { SiOpenai } from "react-icons/si";
-
-
 
 // Import images from assets
 import OdinSkyImg from "@/assets/OdinSky.png";
@@ -26,20 +24,6 @@ interface Project {
   demo?: string;
   metrics?: string;
 }
-
-const techIcons: { [key: string]: any } = {
-  "React": SiReact,
-  "React (TSX)": SiReact,
-  "TypeScript": SiTypescript,
-  "TailwindCSS": SiTailwindcss,
-  "OpenWeather API": WiDaySunny,
-  "Puter.ai": SiOpenai,
-  "PowerBI": FaChartBar,
-  "Data Analysis": Zap,
-  "Visualization": Zap,
-  "JavaScript": SiJavascript,
-  "SQL": SiPostgresql
-};
 
 const projects: Project[] = [
   {
@@ -96,11 +80,8 @@ const projects: Project[] = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 px-4 bg-secondary/5 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 blur-[120px] rounded-full -z-10 pointer-events-none" />
-
-      <div className="container mx-auto">
+    <section id="projects" className="py-24 px-4 project-gradient-bg relative overflow-hidden">
+      <div className="container mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -122,79 +103,81 @@ const Projects = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full flex flex-col overflow-hidden bg-white/5 border-white/10 hover:border-primary/40 transition-all duration-300 group shadow-2xl backdrop-blur-sm">
-                <div className="h-56 relative overflow-hidden bg-muted">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-                  {project.metrics && (
-                    <div className="absolute top-4 right-4 bg-primary/20 backdrop-blur-md border border-primary/30 px-3 py-1 rounded-full flex items-center gap-2 text-xs font-bold text-primary shadow-lg">
-                      <Zap className="w-3.5 h-3.5" />
-                      {project.metrics}
-                    </div>
-                  )}
-                </div>
-
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-2xl font-black text-white group-hover:text-primary transition-colors leading-tight tracking-tight">
-                    {project.title}
-                  </CardTitle>
-                  <CardDescription className="text-base font-semibold text-foreground/70 line-clamp-2 mt-2 leading-relaxed italic">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-
-                <CardContent className="flex-1 space-y-6">
-                  <ul className="text-sm text-foreground/80 space-y-3 font-medium">
-                    {project.points.map((point, i) => (
-                      <li key={i} className="flex gap-3 items-start group/point">
-                        <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 group-hover/point:scale-125 group-hover/point:bg-primary transition-all" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex flex-wrap gap-2 pt-4">
-                    {project.tech.map(t => (
-                      <motion.span
-                        key={t.name}
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        className="flex items-center gap-1.5 bg-white/5 text-xs font-bold text-foreground/80 px-3 py-1.5 rounded-full border border-white/10 hover:border-primary/30 hover:bg-primary/5 transition-colors cursor-default shadow-sm hover:shadow-primary/20"
-                      >
-                        <t.icon
-                          className="w-3.5 h-3.5 transition-transform"
-                          style={{ color: t.color }}
-                        />
-                        {t.name}
-                      </motion.span>
-                    ))}
+              <div className="hover-shiny-border h-full">
+                <Card className="h-full flex flex-col overflow-hidden bg-black/40 border-white/5 group shadow-2xl backdrop-blur-xl relative z-10">
+                  <div className="h-56 relative overflow-hidden bg-muted">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                    {project.metrics && (
+                      <div className="absolute top-4 right-4 bg-primary/20 backdrop-blur-md border border-primary/30 px-3 py-1 rounded-full flex items-center gap-2 text-xs font-bold text-primary shadow-lg">
+                        <Zap className="w-3.5 h-3.5" />
+                        {project.metrics}
+                      </div>
+                    )}
                   </div>
-                </CardContent>
 
-                <CardFooter className="gap-4 pt-6 pb-8 px-6">
-                  {project.github && (
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex-1">
-                      <a href={project.github} target="_blank" rel="noopener noreferrer">
-                        <Button variant="outline" size="lg" className="w-full font-bold h-12 border-primary/20 hover:border-primary/50 hover:bg-primary/5 group/btn">
-                          <Github className="mr-2 h-4 w-4 group-hover/btn:rotate-12 transition-transform" /> Source
-                        </Button>
-                      </a>
-                    </motion.div>
-                  )}
-                  {project.demo && project.demo !== "#" && (
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex-1">
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                        <Button size="lg" className="w-full font-bold h-12 shadow-[0_0_15px_rgba(var(--primary),0.3)] hover:shadow-[0_0_25px_rgba(var(--primary),0.5)] transition-shadow">
-                          <ExternalLink className="mr-2 h-4 w-4" /> {project.title.includes("Dashboard") ? "View Report" : "Live"}
-                        </Button>
-                      </a>
-                    </motion.div>
-                  )}
-                </CardFooter>
-              </Card>
+                  <CardHeader className="pb-4">
+                    <CardTitle className="text-2xl font-black text-white group-hover:text-primary transition-colors leading-tight tracking-tight">
+                      {project.title}
+                    </CardTitle>
+                    <CardDescription className="text-base font-semibold text-foreground/70 line-clamp-2 mt-2 leading-relaxed italic">
+                      {project.description}
+                    </CardDescription>
+                  </CardHeader>
+
+                  <CardContent className="flex-1 space-y-6">
+                    <ul className="text-sm text-foreground/80 space-y-3 font-medium">
+                      {project.points.map((point, i) => (
+                        <li key={i} className="flex gap-3 items-start group/point">
+                          <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-primary/60 mt-2 group-hover/point:scale-125 group-hover/point:bg-primary transition-all" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-wrap gap-2 pt-4">
+                      {project.tech.map(t => (
+                        <motion.span
+                          key={t.name}
+                          whileHover={{ scale: 1.1, y: -2 }}
+                          className="flex items-center gap-1.5 bg-white/5 text-xs font-bold text-foreground/80 px-3 py-1.5 rounded-full border border-white/10 hover:border-primary/30 hover:bg-primary/5 transition-colors cursor-default shadow-sm hover:shadow-primary/20"
+                        >
+                          <t.icon
+                            className="w-3.5 h-3.5 transition-transform"
+                            style={{ color: t.color }}
+                          />
+                          {t.name}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </CardContent>
+
+                  <CardFooter className="gap-4 pt-6 pb-8 px-6">
+                    {project.github && (
+                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex-1">
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="block w-full">
+                          <Button variant="outline" size="lg" className="w-full font-bold h-12 border-primary/20 hover:border-primary/50 hover:bg-primary/5 group/btn">
+                            <Github className="mr-2 h-4 w-4 group-hover/btn:rotate-12 transition-transform" /> Source
+                          </Button>
+                        </a>
+                      </motion.div>
+                    )}
+                    {project.demo && project.demo !== "#" && (
+                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex-1">
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer" className="block w-full">
+                          <Button size="lg" className="w-full font-bold h-12 shadow-[0_0_15px_rgba(var(--primary),0.3)] hover:shadow-[0_0_25px_rgba(var(--primary),0.5)] transition-shadow">
+                            <ExternalLink className="mr-2 h-4 w-4" /> {project.title.includes("Dashboard") ? "View Report" : "Live"}
+                          </Button>
+                        </a>
+                      </motion.div>
+                    )}
+                  </CardFooter>
+                </Card>
+              </div>
             </motion.div>
           ))}
         </div>
