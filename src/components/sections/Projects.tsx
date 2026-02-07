@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { motion } from "framer-motion";
 import { Github, ExternalLink, Zap } from "lucide-react";
 import {
-  SiReact, SiTypescript, SiTailwindcss, SiPostgresql, SiJavascript, SiHtml5, SiCss3
+  SiReact, SiTypescript, SiTailwindcss, SiPostgresql, SiJavascript,
 } from "react-icons/si";
 import { FaChartBar } from "react-icons/fa";
 import { WiDaySunny } from "react-icons/wi";
